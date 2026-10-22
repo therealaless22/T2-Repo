@@ -1,8 +1,13 @@
 package com.ecommerce.demo.controller;
 
 import com.ecommerce.demo.DTO.PedidoRequestDTO;
+<<<<<<< HEAD
 import com.ecommerce.demo.entity.Pedido;
 import com.ecommerce.demo.service.ElectroStoreService;
+=======
+import com.ecommerce.demo.DTO.PedidoResponseDTO;
+import com.ecommerce.demo.service.PedidoService;
+>>>>>>> 012bcf6 (Update T2)
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +21,7 @@ import java.util.List;
 public class PedidoController {
 
     @Autowired
+<<<<<<< HEAD
     private ElectroStoreService service;
 
     @PostMapping
@@ -35,3 +41,28 @@ public class PedidoController {
         
     }
 }
+=======
+    private PedidoService pedidoService;
+
+    @PostMapping
+    public ResponseEntity<PedidoResponseDTO> crear(@Valid @RequestBody PedidoRequestDTO request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.crear(request));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PedidoResponseDTO>> listar() {
+        return ResponseEntity.ok(pedidoService.listar());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PedidoResponseDTO> obtener(@PathVariable Long id) {
+        return ResponseEntity.ok(pedidoService.obtener(id));
+    }
+
+    // JPQL JOIN FETCH
+    @GetMapping("/cliente/{cliente}")
+    public ResponseEntity<List<PedidoResponseDTO>> porCliente(@PathVariable String cliente) {
+        return ResponseEntity.ok(pedidoService.porCliente(cliente));
+    }
+}
+>>>>>>> 012bcf6 (Update T2)

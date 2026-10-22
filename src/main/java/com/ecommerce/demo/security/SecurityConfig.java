@@ -42,7 +42,11 @@ public class SecurityConfig {
             .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtEntryPoint))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
+<<<<<<< HEAD
                 .requestMatchers("/api/auth/**", "/error").permitAll()
+=======
+            	.requestMatchers("/api/auth/**", "/error").permitAll()
+>>>>>>> 012bcf6 (Update T2)
                 .anyRequest().authenticated()
             );
 
